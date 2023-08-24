@@ -30,23 +30,25 @@ h2 {
 .typed {
   color: gray;
   font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
-  border-right: .35em solid;
-  margin-left: 5px;
+  overflow: hidden; 
+  border-right: .16em solid;
   white-space: nowrap;
+  margin: 0 auto; 
+  position: relative;
+  width: 17em;
+  text-align: center;
   animation: 
-  typing 1.5s steps(30, end) forwards,
-  blinking 1.2s infinite;
-  font-size: 1.6rem;
-  width: 0;
+    typing 2.5s steps(40) 1s 1 normal both,
+    blink-caret .75s infinite;
 }
 @keyframes typing {
   from { width: 0 }
-  to { width: 100% }
+  to { width: 17em }
 }
-@keyframes blinking {
-  from { border-color: transparent }
-  to { border-color: grey; }
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: gray; }
 }
 
 
@@ -55,10 +57,7 @@ h2 {
   margin-left: -80px;
 }
 
-svg {
-margin-top: 150px;
-margin-left: 150px;
-}
+
 
 
 .techstack-description {
@@ -201,8 +200,12 @@ footer {
 
 @media (max-width: 479px) {
  
-  svg {
+  .boat {
     display: none;
+  }
+
+  .dark-area-1 {
+    margin-top: 25px;
   }
 
   .home-description {
@@ -227,15 +230,7 @@ footer {
 
 .typed {
   font-size: 20px;
-  padding-left: 5px;
-}
-
-.social-icons {
-  padding-left: 80px;
 }
 
 }
 
-.header-line1 {
-  float: inline-end;
-}

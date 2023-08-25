@@ -85,11 +85,11 @@ h2 {
 }
 
 .home-description {
+  color: whitesmoke;
   font-family: Georgia, serif;
   font-size: 25px;
   text-align: center;
   padding: 40px;
-  opacity: 85%;
 }
 
 .button-background-move {

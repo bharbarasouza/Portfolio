@@ -8,5 +8,46 @@ body {
     background-blend-mode: overlay;
 }
 
+.about-header {
+    color: whitesmoke;
+    
+}
 
+.typewrite {
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: 200;
+    font-style: italic;
+}
 
+.typewrite:hover {
+    cursor: inherit;
+}
+
+.about-me-paragraph {
+    color: whitesmoke;
+    font-family: 'Montserrat', serif;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.techstack-area {
+    background-color: #2b2b2b;
+    opacity: .9;
+    color: whitesmoke;
+    width: 100%;
+}
+
+.row-2-tech {
+    margin-top: 0 !important;
+}
+
+h3 {
+    font-family: 'Montserrat', serif;
+}
+
+.fa-brands,
+.fa-solid,
+.techstack-text {
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}

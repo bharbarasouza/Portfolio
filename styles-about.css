@@ -161,7 +161,52 @@ h3 {
         text-align: center;
     }
 
-    .about-me-paragraph {
-        position: relative;
+    .about-header {
+        font-size: 25px;
     }
+}
+
+
+.home-btn-start,
+.home-btn-end {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid whitesmoke;
+  outline: none;
+  transition: 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 3px;
+}
+
+svg {
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.home-btn-start:hover,
+.home-btn-end:hover {
+  background: #191919;
+}
+
+.home-btn-start:hover svg,
+.home-btn-end:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.home-btn-start span,
+.home-btn-end span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }

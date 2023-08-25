@@ -183,15 +183,7 @@ footer {
 }
 
 @media (max-width: 765px) {
-  .button-perspective {
-    padding: .75rem 2rem;
-  }
-
-  .button-background-move {
-    padding: .75rem 2rem;
-  }
-
-  .dark-area-1 {
+   .dark-area-1 {
     width: 100%;
   }
 

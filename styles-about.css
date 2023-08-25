@@ -147,3 +147,21 @@ h3 {
     left: 0px;
   }
 
+  @media (max-width: 765px) {
+   
+    .about-btn-end, .about-btn-start {
+        padding: 10px;
+      }
+
+    body {
+        background: #191919;
+    }  
+
+    .about-header, .about-me-paragraph {
+        text-align: center;
+    }
+
+    .about-me-paragraph {
+        position: relative;
+    }
+}

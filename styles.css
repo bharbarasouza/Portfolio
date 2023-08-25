@@ -182,7 +182,7 @@ footer {
   padding-top: 50px;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 300px) {
   .button-perspective {
     padding: .75rem 2rem;
   }

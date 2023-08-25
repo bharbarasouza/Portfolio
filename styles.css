@@ -183,12 +183,36 @@ footer {
   padding-top: 50px;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 320px) {
   .button-perspective {
     padding: .75rem 2rem;
   }
 
   .button-background-move {
     padding: .75rem 2rem;
+  }
+
+  .dark-area-1 {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+  .myname {
+    font-size: 46px;
+  }
+
+  .typed {
+    font-size: 18px;
+  }
+
+  .home-description {
+    padding: 0;
+    font-size: 18px;
+  }
+
+  .button-background-move, .button-perspective {
+    padding: 10px;
   }
 }

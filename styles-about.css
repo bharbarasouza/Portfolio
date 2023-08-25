@@ -1,0 +1,12 @@
+body {
+    background: url('images/WhatsApp_Image_2023-08-25_at_12.41.16-removebg.png'), 
+     #191919;
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right;
+    background-blend-mode: overlay;
+}
+
+
+

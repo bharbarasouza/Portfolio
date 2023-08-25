@@ -78,7 +78,7 @@ h2 {
 
 .dark-area-1 {
   background-color: #191919;
-  color: white;
+  color: whitesmoke;
   box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.3);
   padding: 90px;
   margin-top: 40px;
@@ -86,7 +86,6 @@ h2 {
 
 .home-description {
   font-family: Georgia, serif;
-  font-style: italic;
   font-size: 25px;
   text-align: center;
   padding: 40px;
@@ -105,7 +104,7 @@ h2 {
   cursor: pointer;
   position: relative;
   background-color: #1d1e22;
-  color: white;
+  color: whitesmoke;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -174,16 +173,16 @@ h2 {
 }
 
 .footer-link {
-  color: white;
+  color: whitesmoke;
 }
 
 footer {
-  color: white;
+  color: whitesmoke;
   font-size: 15px;
   padding-top: 50px;
 }
 
-@media (min-width: 320px) {
+@media (max-width: 320px) {
   .button-perspective {
     padding: .75rem 2rem;
   }

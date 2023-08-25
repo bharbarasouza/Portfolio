@@ -161,7 +161,7 @@ h3 {
         text-align: center;
     }
 
-    .about-me-paragraph {
-        position: relative;
+    .about-header {
+        font-size: 25px;
     }
 }

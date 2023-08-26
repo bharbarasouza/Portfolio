@@ -86,11 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
         css.innerHTML = ".typewrite > .wrap ";
         document.body.appendChild(css);
     };
-
-    function onSubmit(token) {
-      document.getElementById("submit").submit();
-  } 
-  
+ 
   
   });
   

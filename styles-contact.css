@@ -1,0 +1,48 @@
+body {
+    background-image: url('images/8728.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+   }
+
+   .form-container {
+    background-color: #191919;
+    width: 100%;
+    color: whitesmoke;
+    
+   }
+
+   .contact-title {
+    font-family: 'Montserrat', serif;
+    color: #191919;
+    font-weight: 400;
+    font-size: 36px;
+   }
+
+   .form-group, .form-control, .input-group-prepend {
+    border-radius: 3px;
+  }
+  
+  .form-group .form-control {
+    border-radius: inherit !important;
+}
+  
+  .input-group .form-control:focus {
+    border-color: #191919;
+  }
+
+  .btn {
+  width: 180px;
+  height: 60px;
+  background: #191919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-family: 'Montserrat', serif;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.footer-link {
+    color: #373b35;
+  }

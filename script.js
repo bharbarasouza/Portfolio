@@ -87,8 +87,9 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.appendChild(css);
     };
 
-  
-  
+    function onSubmit(token) {
+      document.getElementById("submit").submit();
+  } 
   
   
   });

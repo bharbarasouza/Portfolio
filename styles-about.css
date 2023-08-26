@@ -70,10 +70,6 @@ h3 {
   
   @media (max-width: 765px) {
    
-    .about-btn-end, .about-btn-start {
-        padding: 10px;
-      }
-
     body {
         background: #191919;
     }  
@@ -85,6 +81,19 @@ h3 {
     .about-header {
         font-size: 25px;
     }
+
+    .btn {
+        width: 110px !important;
+      }
+    
+      footer {
+        font-size: 10px;
+      }
+    
+      svg {
+        display: none;
+    }    
+
 }
 
 

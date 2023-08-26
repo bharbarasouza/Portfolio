@@ -2,12 +2,14 @@ body {
   background-image: url('images/city-background.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
-  background-attachment: fixed; 
+  background-attachment: fixed;
+  min-height: 100vh; 
 }
 
 h2,
 h3 {
   text-align: center;
+  
 }
 
 nav {
@@ -21,6 +23,7 @@ nav {
 
 .socials {
   transition: color 0.3s ease;
+  width: 65px;
 }
 
 
@@ -41,9 +44,6 @@ h2 {
   margin-left: 100px;
 }
 
-.socials {
-  width: 65px;
-}
 
 .typed {
   color: #30353a;
@@ -81,7 +81,7 @@ h2 {
   color: whitesmoke;
   box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.3);
   padding: 90px;
-  margin-top: 40px;
+  margin-top: 40px;  
 }
 
 .home-description {
@@ -131,11 +131,11 @@ footer {
     font-size: 10px;
   }
 
-  svg.svg-start-btn {
-    width: 110px;
-  }
+  svg {
+    display: none;
 }
 
+}
 .home-btn-start,
 .home-btn-end {
   width: 180px;
@@ -179,4 +179,5 @@ svg {
   font-size: 18px;
   font-weight: 100;
 }
+
 

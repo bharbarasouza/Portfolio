@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles-contact.css">
+<link rel="stylesheet" href="src/styles-contact.css">
 <script src="script.js"></script>
 <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 <title>Contact | Bharbara Souza</title>
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand ms-2" href="index.html">
-           <img src="images/bharbara-souza-high-resolution-logo-color-on-transparent-background.png" width="200" alt="">
+           <img src="src/images/bharbara-souza-high-resolution-logo-color-on-transparent-background.png" width="200" alt="">
                     </a>
             <button
             class="navbar-toggler"
@@ -54,10 +54,10 @@
       </nav>
       <div class="container mw-100">
         <div class="row">
-            <div class="form-container col-md-12 mt-5">
+            <div class="form-container col-md-12 mt-5 p-5">
                 <div class="container">
                     <div class="row">
-                      <div class="col-md-6 ms-0 m-5 p-5 bg-light rounded">
+                      <div class="col-md-6 ms-0 p-5 bg-light rounded">
                         <h1 class="text-center contact-title">Contact Me</h1>
                         <hr class="bg-light">
                         <h5 class="text-center"></h5>
@@ -77,17 +77,40 @@
                             </div>
                             <textarea name="message" id="message" class="form-control m-1" placeholder="Write your message" cols="30" rows="4" required></textarea>
                           </div>
-                          <div class="g-recaptcha" data-sitekey="6Lexh9gnAAAAAJiKV0mSPtsZFHnfmAE9T6UmW0rs"></div>
                           <div class="form-group d-flex justify-content-center mt-2">
-                            <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block g-recaptcha" value="Submit" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit'data-action='submit'>
+                            <input type="submit" name="submit" id="submit" class="btn btn-dark btn-block" value="Submit">
                           </div>
-                        </form>
+                        </form>                        
                       </div>
+                      <div class="col-md-6 ">
+                          <p class="contact-header">Your website. One <em>hello</em> away.</em></p>
+                          <p class="contact-details">
+                            <i class="contact-icon fa-solid fa-envelope fa-lg"></i>
+                            <strong>Email:</strong> <a class="contact-links" href="mailto:contact@bharbarasouza.com">contact@bharbarasouza.com</a>
+                        </p>
+                        <p class="contact-details">
+                            <i class="contact-icon fa-brands fa-linkedin fa-xl"></i>    
+                            <strong>Linkedin:</strong> <a class="contact-links" href="https://www.linkedin.com/in/bharbarasouza/">in/bharbarasouza</a>
+                        </p>  
+                        <div class="container-btn-start">
+                            <div class="d-flex justify-content-center">
+                              <form action="index.html">
+                                <button class="contact-btn btn" type="submit">
+                                  <svg class="svg-start-btn" width="180px" height="60px" viewBox="0 0 180 60" class="border">
+                                    <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+                                    <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+                                  </svg>
+                                  <span>Back to Home</span>
+                                </button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>                      
                     </div>
-                  </div>
+              </div>
             </div>
-        </div>
-      </div>
+                    
+                 
       <footer class="text-center mt-5 mb-3">© Coded by Bharbara Souza. Open-sourced on <a class="footer-link" href="https://github.com/bharbarasouza/">Github</a>.</footer>
 
 </body>

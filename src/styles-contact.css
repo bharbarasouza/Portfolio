@@ -1,0 +1,139 @@
+body {
+    background-image: url('images/8728.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+   }
+
+   .form-container {
+    background-color: #191919;
+    width: 100%;
+    color: whitesmoke;
+    
+   }
+
+   .contact-title {
+    font-family: 'Montserrat', serif;
+    color: #303134;
+    font-weight: 600;
+    font-size: 30px;
+   }
+
+   .form-group, .form-control, .input-group-prepend {
+    border-radius: 3px;
+  }
+  
+  .form-group .form-control {
+    border-radius: inherit !important;
+}
+  
+  .input-group .form-control:focus {
+    border-color: #191919;
+  }
+
+  .btn {
+  width: 120px;
+  height: 50px;
+  background: #191919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  font-family: 'Montserrat', serif;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.footer-link {
+    color: #373b35;
+  }
+
+  .contact-header {
+    font-family: 'Montserrat', serif;
+    font-size: 70px;
+    font-weight: 700;
+    padding-left: 30px;
+    margin-bottom: 30px;
+  }
+.contact-details {
+    font-size: 18px;
+    font-family: 'Montserrat', serif;
+}
+  .contact-icon {
+    padding-left: 40px;
+  }
+
+  .contact-links {
+    color: whitesmoke;
+    text-decoration: none;
+    font-style: italic;
+  }
+
+
+.contact-btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid whitesmoke;
+  outline: none;
+  transition: 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 3px;
+  font-family: 'Segoe UI';
+  margin-top: 40px;
+
+}
+
+svg {
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.contact-btn:hover {
+  background: #303134;
+}
+
+.contact-btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.contact-btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+@media (max-width: 765px) {
+  .contact-header {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .contact-details {
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+  }
+  .contact-btn {
+    width: 140px !important;
+  }
+
+  svg {
+    display: none;
+}    
+
+footer {
+    font-size: 10px;
+  }
+
+}

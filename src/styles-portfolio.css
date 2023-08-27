@@ -1,0 +1,211 @@
+.parallax-1 {
+    background-color: #191919;
+    color: whitesmoke;
+}
+
+.project1-header {
+    font-family: 'Montserrat', serif;
+    font-size: 40px;
+    font-weight: 700;
+    padding-left: 30px;
+    text-align: center;
+    font-style: italic;
+    text-shadow: 5px 4px 6px rgba(0, 0, 0, 0.8);
+}
+
+.project1-subheader {
+    font-weight: 300;
+    text-align: end;    
+}
+
+a {
+    color: whitesmoke ;
+    text-decoration: none ;
+}
+
+.footer-link {
+    color: #373b35;
+    text-decoration: underline;
+  }
+
+
+.project1-img {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 80%;
+    height: auto;
+    border: 1px solid gray;
+    box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.8);
+    border-radius: 3px !important;
+}
+
+.container-tech {
+    background-color: #303134;
+    border: 1px solid gray;
+    box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.8);
+    border-radius: 3px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.built {
+    font-family: 'Montserrat', serif;
+    text-shadow: 5px 4px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.parallax-area1 {
+    height: 50vh;
+    background-image: url('images/8728.jpg');
+    background-size: cover;
+    background-attachment: fixed;    
+}
+
+.parallax-area2 {
+    height: 50vh;
+    background-color: #191919;
+    color: whitesmoke;
+}
+
+.parallax-area3 {
+    height: 50vh;
+    background-image: url('images/city-background.jpg');
+    background-size: cover;
+    background-attachment: fixed; 
+}
+
+.home-btn-start,
+.home-btn-end {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid whitesmoke;
+  outline: none;
+  transition: 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 3px;
+}
+
+svg {
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.home-btn-start:hover,
+.home-btn-end:hover {
+  background: #303134;
+}
+
+.home-btn-start:hover svg,
+.home-btn-end:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.home-btn-start span,
+.home-btn-end span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.area2-header {
+    font-family: 'Montserrat', serif;
+    font-size: 48px;
+    font-weight: 800;
+    margin: 0 auto;
+    text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
+
+}
+
+@media (max-width: 765px) {
+
+
+    .project1-header {
+        margin: 0px !important;
+        padding: 0 !important;
+        margin-bottom: 18px;
+    }
+    
+    .project1-img {
+        padding: 0 !important;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .div-img {
+        padding: 30px  !important;
+        padding-bottom: 0 !important;
+    }
+
+    .project1-subheader {
+        padding: 0;
+        margin: 0 !important;
+        text-align: center;
+    }
+
+    .container-tech {
+        width: 90%;
+        font-size: 12px;
+    }
+    
+
+    .btn {
+        width: 110px !important;
+      }
+    
+      footer {
+        font-size: 10px;
+        color: whitesmoke;
+    }
+
+      .parallax-area1,
+      .parallax-area2,
+      .parallax-area3 {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+      }
+      .parallax-1 {
+        width: 100vw !important;
+        margin: 0 !important;
+      }  
+
+      .area2-header {
+        padding: 0 !important;
+        font-size: 18px;
+        width: 80%;
+      }
+
+      body {
+        overflow-x: hidden !important;
+      }
+      div.col-md-12 {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      *:not(i) {
+        overflow-x: hidden;
+      }
+
+      svg {
+        display: none;
+    }    
+
+   
+    }
+    
+

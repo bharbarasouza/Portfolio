@@ -35,8 +35,9 @@ body {
     background-color: #303134;
     color: whitesmoke;
     padding: 20px;
+    border: 1px solid gray;
     border-radius: 3px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .row-2-tech {

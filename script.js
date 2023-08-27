@@ -86,6 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
         css.innerHTML = ".typewrite > .wrap ";
         document.body.appendChild(css);
     };
+
+ 
  
   
   });

@@ -58,6 +58,7 @@ nav {
   font-family: var(--font-m); font-size: .95rem;
   color: var(--accent); text-decoration: none; letter-spacing: .05em;
 }
+.nav-right { display: flex; align-items: center; gap: 2.5rem; }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 .nav-links a {
   font-family: var(--font-m); font-size: .7rem; letter-spacing: .18em;
@@ -65,6 +66,23 @@ nav {
   transition: color .2s; cursor: none;
 }
 .nav-links a:hover { color: var(--accent); }
+
+/* LANGUAGE TOGGLE */
+.lang-toggle {
+  display: flex; align-items: center; gap: 0;
+  border: 1px solid var(--border); overflow: hidden;
+  flex-shrink: 0;
+}
+.lang-btn {
+  font-family: var(--font-m); font-size: .62rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: .42rem .85rem; background: transparent; color: var(--muted);
+  border: none; cursor: none; transition: background .2s, color .2s;
+}
+.lang-btn.active {
+  background: var(--accent); color: #000;
+}
+.lang-btn:not(.active):hover { color: var(--accent); }
 
 /* HERO */
 .hero {
@@ -254,7 +272,7 @@ h2 .si3 { font-family:var(--font-s); font-style:italic; font-weight:400; color:v
   text-transform:uppercase; color:var(--accent); text-decoration:none;
   transition:gap .2s; cursor:none; margin-top:auto;
 }
-.proj-link::after { content:'→'; }
+.proj-link::after { content:'&#8594;'; }
 .proj-link:hover { gap:.9rem; }
 .proj-link.a2 { color:var(--accent2); }
 .proj-link.a3 { color:var(--accent3); }
@@ -333,6 +351,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
 /* MOBILE */
 @media(max-width:860px){
   nav { padding:1.2rem 1.5rem; }
+  .nav-links { gap:1.2rem; }
   .hero { grid-template-columns:1fr; padding:8rem 1.5rem 4rem; }
   .hero-right { display:none; }
   .stats-bar { grid-template-columns:1fr 1fr; }
@@ -355,12 +374,18 @@ footer p a { color:var(--accent3); text-decoration:none; }
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">bharbara.dev</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about"      data-i18n="nav.about">About</a></li>
+      <li><a href="#portfolio"  data-i18n="nav.portfolio">Portfolio</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+      <li><a href="#contact"    data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btn-pt" onclick="setLang('pt')">PT</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -373,14 +398,14 @@ footer p a { color:var(--accent3); text-decoration:none; }
   </div>
 
   <div class="hero-content">
-    <div class="eyebrow"><span class="blink-dot"></span>Open to new opportunities</div>
+    <div class="eyebrow"><span class="blink-dot"></span><span data-i18n="hero.eyebrow">Open to new opportunities</span></div>
     <h1>Web<br>Devel<span class="si">oper.</span></h1>
-    <p class="hero-desc">
+    <p class="hero-desc" data-i18n="hero.desc">
       Transforming ideas into captivating, high-performance websites. Fusing design sensibility with technical craft to build digital experiences that inspire and convert.
     </p>
     <div class="cta-row">
-      <a href="#portfolio" class="btn btn-p">View Work</a>
-      <a href="#contact"   class="btn btn-o">Get in Touch</a>
+      <a href="#portfolio" class="btn btn-p" data-i18n="hero.cta1">View Work</a>
+      <a href="#contact"   class="btn btn-o" data-i18n="hero.cta2">Get in Touch</a>
     </div>
   </div>
 
@@ -409,26 +434,26 @@ footer p a { color:var(--accent3); text-decoration:none; }
 
 <!-- STATS -->
 <div class="stats-bar">
-  <div class="stat rev"><div class="stat-n">3+</div><div class="stat-l">Years building</div></div>
-  <div class="stat rev"><div class="stat-n">10+</div><div class="stat-l">Projects shipped</div></div>
-  <div class="stat rev"><div class="stat-n">15+</div><div class="stat-l">Technologies</div></div>
-  <div class="stat rev"><div class="stat-n">&#x1F1E7;&#x1F1F7;</div><div class="stat-l">Based in Brazil</div></div>
+  <div class="stat rev"><div class="stat-n">3+</div><div class="stat-l" data-i18n="stats.years">Years building</div></div>
+  <div class="stat rev"><div class="stat-n">10+</div><div class="stat-l" data-i18n="stats.projects">Projects shipped</div></div>
+  <div class="stat rev"><div class="stat-n">15+</div><div class="stat-l" data-i18n="stats.tech">Technologies</div></div>
+  <div class="stat rev"><div class="stat-n">&#x1F1E7;&#x1F1F7;</div><div class="stat-l" data-i18n="stats.based">Based in Brazil</div></div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div class="rev-l">
-      <div class="sec-label">01 — About</div>
+      <div class="sec-label" data-i18n="about.label">01 — About</div>
       <h2>Code.<br><span class="si2">Craft.</span><br>Create.</h2>
       <div class="about-text">
-        <p>
+        <p data-i18n="about.p1">
           I'm a <strong>Web Developer</strong> focused on building clean, performant, and visually compelling web experiences from the ground up.
         </p>
-        <p>
+        <p data-i18n="about.p2">
           Since 2022, I've been fully invested in the world of web development — a journey that genuinely fulfils me. I combine a strong eye for <strong>design</strong> with solid <strong>technical foundations</strong> to deliver work that looks great and works even better.
         </p>
-        <p>
+        <p data-i18n="about.p3">
           Originally from <strong>Brazil</strong> and currently based here — I bring a global perspective and a collaborative spirit to every project. Let's connect and create something awesome together.
         </p>
       </div>
@@ -436,7 +461,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
 
     <div class="rev skills-wrap">
       <div>
-        <div class="sg-title">Frontend</div>
+        <div class="sg-title" data-i18n="skills.frontend">Frontend</div>
         <div class="chips">
           <span class="chip hot">HTML5</span>
           <span class="chip hot">CSS3</span>
@@ -447,12 +472,12 @@ footer p a { color:var(--accent3); text-decoration:none; }
           <span class="chip">Vue.js</span>
           <span class="chip hot">Tailwind CSS</span>
           <span class="chip">Sass / SCSS</span>
-          <span class="chip">Responsive Design</span>
-          <span class="chip">Web Accessibility</span>
+          <span class="chip" data-i18n="chip.responsive">Responsive Design</span>
+          <span class="chip" data-i18n="chip.a11y">Web Accessibility</span>
         </div>
       </div>
       <div>
-        <div class="sg-title">Backend &amp; APIs</div>
+        <div class="sg-title" data-i18n="skills.backend">Backend &amp; APIs</div>
         <div class="chips">
           <span class="chip hot">Node.js</span>
           <span class="chip hot">REST APIs</span>
@@ -464,7 +489,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
         </div>
       </div>
       <div>
-        <div class="sg-title">Tools &amp; Workflow</div>
+        <div class="sg-title" data-i18n="skills.tools">Tools &amp; Workflow</div>
         <div class="chips">
           <span class="chip hot">Git / GitHub</span>
           <span class="chip hot">VS Code</span>
@@ -483,107 +508,107 @@ footer p a { color:var(--accent3); text-decoration:none; }
 <!-- MARQUEE -->
 <div class="mq-wrap">
   <div class="mq-track">
-    <span class="ma">React</span><span>·</span>
-    <span class="mb">TypeScript</span><span>·</span>
-    <span>Next.js</span><span>·</span>
-    <span class="ma">Node.js</span><span>·</span>
-    <span>Tailwind CSS</span><span>·</span>
-    <span class="mb">PostgreSQL</span><span>·</span>
-    <span>GraphQL</span><span>·</span>
-    <span class="ma">REST APIs</span><span>·</span>
-    <span>Figma</span><span>·</span>
-    <span class="mb">Git &amp; GitHub</span><span>·</span>
-    <span>Vercel</span><span>·</span>
-    <span class="ma">Web Developer</span><span>·</span>
-    <span class="mb">Brazil</span><span>·</span>
-    <span class="ma">React</span><span>·</span>
-    <span class="mb">TypeScript</span><span>·</span>
-    <span>Next.js</span><span>·</span>
-    <span class="ma">Node.js</span><span>·</span>
-    <span>Tailwind CSS</span><span>·</span>
-    <span class="mb">PostgreSQL</span><span>·</span>
-    <span>GraphQL</span><span>·</span>
-    <span class="ma">REST APIs</span><span>·</span>
-    <span>Figma</span><span>·</span>
-    <span class="mb">Git &amp; GitHub</span><span>·</span>
-    <span>Vercel</span><span>·</span>
-    <span class="ma">Web Developer</span><span>·</span>
-    <span class="mb">Brazil</span><span>·</span>
+    <span class="ma">React</span><span>&#183;</span>
+    <span class="mb">TypeScript</span><span>&#183;</span>
+    <span>Next.js</span><span>&#183;</span>
+    <span class="ma">Node.js</span><span>&#183;</span>
+    <span>Tailwind CSS</span><span>&#183;</span>
+    <span class="mb">PostgreSQL</span><span>&#183;</span>
+    <span>GraphQL</span><span>&#183;</span>
+    <span class="ma">REST APIs</span><span>&#183;</span>
+    <span>Figma</span><span>&#183;</span>
+    <span class="mb">Git &amp; GitHub</span><span>&#183;</span>
+    <span>Vercel</span><span>&#183;</span>
+    <span class="ma">Web Developer</span><span>&#183;</span>
+    <span class="mb">Brazil</span><span>&#183;</span>
+    <span class="ma">React</span><span>&#183;</span>
+    <span class="mb">TypeScript</span><span>&#183;</span>
+    <span>Next.js</span><span>&#183;</span>
+    <span class="ma">Node.js</span><span>&#183;</span>
+    <span>Tailwind CSS</span><span>&#183;</span>
+    <span class="mb">PostgreSQL</span><span>&#183;</span>
+    <span>GraphQL</span><span>&#183;</span>
+    <span class="ma">REST APIs</span><span>&#183;</span>
+    <span>Figma</span><span>&#183;</span>
+    <span class="mb">Git &amp; GitHub</span><span>&#183;</span>
+    <span>Vercel</span><span>&#183;</span>
+    <span class="ma">Web Developer</span><span>&#183;</span>
+    <span class="mb">Brazil</span><span>&#183;</span>
   </div>
 </div>
 
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="rev">
-    <div class="sec-label">02 — Portfolio</div>
-    <h2>Selected<br><span class="si">work.</span></h2>
+    <div class="sec-label" data-i18n="portfolio.label">02 — Portfolio</div>
+    <h2><span data-i18n="portfolio.heading">Selected</span><br><span class="si" data-i18n="portfolio.heading2">work.</span></h2>
   </div>
   <div class="proj-grid">
 
     <div class="proj-card rev">
       <div class="proj-num">001</div>
-      <h3>E-Commerce Storefront</h3>
-      <p>Fully responsive online store with product filtering, cart management, and Stripe checkout. Optimised for Core Web Vitals with Next.js server components.</p>
+      <h3 data-i18n="proj1.title">Ricardo Urbano — Coach</h3>
+      <p data-i18n="proj1.desc">Full website for a life coach with 10 years of experience. Features client testimonials, services overview, Calendly booking integration, and a free e-book download popup.</p>
       <div class="ptags">
-        <span class="ptag">Next.js</span><span class="ptag">TypeScript</span>
-        <span class="ptag">Tailwind</span><span class="ptag">Stripe</span>
+        <span class="ptag">HTML5</span><span class="ptag">CSS3</span>
+        <span class="ptag">JavaScript</span><span class="ptag">Calendly</span>
       </div>
-      <a href="#" class="proj-link">View Project</a>
+      <a href="https://ricardourbano.com.br/" target="_blank" class="proj-link" data-i18n="proj.view">View Project</a>
     </div>
 
     <div class="proj-card l2 rev">
       <div class="proj-num">002</div>
-      <h3>Personal Finance Dashboard</h3>
-      <p>Interactive dashboard for tracking expenses and income, with live charts, monthly summaries, and a REST API backend powered by PostgreSQL.</p>
+      <h3 data-i18n="proj2.title">Personal Finance Dashboard</h3>
+      <p data-i18n="proj2.desc">Interactive dashboard for tracking expenses and income, with live charts, monthly summaries, and a REST API backend powered by PostgreSQL.</p>
       <div class="ptags">
         <span class="ptag">React</span><span class="ptag">Node.js</span>
         <span class="ptag">PostgreSQL</span><span class="ptag">Chart.js</span>
       </div>
-      <a href="#" class="proj-link a2">View Project</a>
+      <a href="#" class="proj-link a2" data-i18n="proj.view">View Project</a>
     </div>
 
     <div class="proj-card l3 rev">
       <div class="proj-num">003</div>
-      <h3>What's the Drizzle?</h3>
-      <p>Responsive weather app consuming the OpenWeather API. Clean UI with city search and live conditions. Built with vanilla JS and CSS Grid.</p>
+      <h3 data-i18n="proj3.title">What's the Drizzle?</h3>
+      <p data-i18n="proj3.desc">Responsive weather app consuming the OpenWeather API. Clean UI with city search and live conditions. Built with vanilla JS and CSS Grid.</p>
       <div class="ptags">
         <span class="ptag">JavaScript</span><span class="ptag">CSS Grid</span>
         <span class="ptag">Web API</span><span class="ptag">Netlify</span>
       </div>
-      <a href="https://whatsthedrizzle.netlify.app/" class="proj-link a3">Live Demo</a>
+      <a href="https://whatsthedrizzle.netlify.app/" class="proj-link a3" data-i18n="proj.demo">Live Demo</a>
     </div>
 
     <div class="proj-card rev">
       <div class="proj-num">004</div>
-      <h3>Agency Landing Page</h3>
-      <p>High-conversion marketing page with scroll animations, accessibility-first markup, and a Lighthouse performance score of 98+.</p>
+      <h3 data-i18n="proj4.title">Agency Landing Page</h3>
+      <p data-i18n="proj4.desc">High-conversion marketing page with scroll animations, accessibility-first markup, and a Lighthouse performance score of 98+.</p>
       <div class="ptags">
         <span class="ptag">HTML5</span><span class="ptag">CSS3</span>
         <span class="ptag">GSAP</span><span class="ptag">Figma</span>
       </div>
-      <a href="#" class="proj-link">View Project</a>
+      <a href="#" class="proj-link" data-i18n="proj.view">View Project</a>
     </div>
 
     <div class="proj-card l2 rev">
       <div class="proj-num">005</div>
-      <h3>Headless Blog Platform</h3>
-      <p>MDX-powered blog with tag filtering, reading time estimates, dark mode, RSS feed, and static generation for maximum performance.</p>
+      <h3 data-i18n="proj5.title">Headless Blog Platform</h3>
+      <p data-i18n="proj5.desc">MDX-powered blog with tag filtering, reading time estimates, dark mode, RSS feed, and static generation for maximum performance.</p>
       <div class="ptags">
         <span class="ptag">Next.js</span><span class="ptag">MDX</span>
         <span class="ptag">GraphQL</span><span class="ptag">Vercel</span>
       </div>
-      <a href="#" class="proj-link a2">View Project</a>
+      <a href="#" class="proj-link a2" data-i18n="proj.view">View Project</a>
     </div>
 
     <div class="proj-card l3 rev">
       <div class="proj-num">006</div>
-      <h3>Task Management App</h3>
-      <p>Kanban-style task manager with drag-and-drop, real-time updates via WebSockets, user authentication, and team collaboration features.</p>
+      <h3 data-i18n="proj6.title">Task Management App</h3>
+      <p data-i18n="proj6.desc">Kanban-style task manager with drag-and-drop, real-time updates via WebSockets, user authentication, and team collaboration features.</p>
       <div class="ptags">
         <span class="ptag">React</span><span class="ptag">Firebase</span>
         <span class="ptag">TypeScript</span><span class="ptag">Tailwind</span>
       </div>
-      <a href="#" class="proj-link a3">View Project</a>
+      <a href="#" class="proj-link a3" data-i18n="proj.view">View Project</a>
     </div>
 
   </div>
@@ -592,30 +617,30 @@ footer p a { color:var(--accent3); text-decoration:none; }
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="rev">
-    <div class="sec-label">03 — Experience</div>
-    <h2>How I got<br><span class="si3">here.</span></h2>
+    <div class="sec-label" data-i18n="exp.label">03 — Experience</div>
+    <h2><span data-i18n="exp.heading">How I got</span><br><span class="si3" data-i18n="exp.heading2">here.</span></h2>
   </div>
   <div class="exp-list">
     <div class="exp-item rev">
       <div class="exp-dot"></div>
       <div>
-        <div class="exp-period">2023 — Present</div>
-        <div class="exp-company">Freelance</div>
+        <div class="exp-period" data-i18n="exp1.period">2023 — Present</div>
+        <div class="exp-company" data-i18n="exp1.company">Freelance</div>
       </div>
       <div>
-        <div class="exp-role">Web Developer</div>
-        <p class="exp-desc">Building end-to-end web projects for clients — from landing pages and portfolios to full-stack applications. Focused on clean code, performance, and accessibility.</p>
+        <div class="exp-role" data-i18n="exp1.role">Web Developer</div>
+        <p class="exp-desc" data-i18n="exp1.desc">Building end-to-end web projects for clients — from landing pages and portfolios to full-stack applications. Focused on clean code, performance, and accessibility.</p>
       </div>
     </div>
     <div class="exp-item rev">
       <div class="exp-dot"></div>
       <div>
-        <div class="exp-period">2022 — 2023</div>
-        <div class="exp-company">Self-directed Learning</div>
+        <div class="exp-period" data-i18n="exp2.period">2022 — 2023</div>
+        <div class="exp-company" data-i18n="exp2.company">Self-directed Learning</div>
       </div>
       <div>
-        <div class="exp-role">Full-Stack Foundations</div>
-        <p class="exp-desc">Deep dive into web development — HTML, CSS, JavaScript, React, Node.js, and databases. Built a portfolio of real projects and shipped first client work.</p>
+        <div class="exp-role" data-i18n="exp2.role">Full-Stack Foundations</div>
+        <p class="exp-desc" data-i18n="exp2.desc">Deep dive into web development — HTML, CSS, JavaScript, React, Node.js, and databases. Built a portfolio of real projects and shipped first client work.</p>
       </div>
     </div>
   </div>
@@ -625,9 +650,9 @@ footer p a { color:var(--accent3); text-decoration:none; }
 <section id="contact">
   <div class="contact-grid">
     <div class="contact-left rev-l">
-      <div class="sec-label">04 — Contact</div>
-      <h2>Let's build<br><span class="si">something.</span></h2>
-      <p>Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.</p>
+      <div class="sec-label" data-i18n="contact.label">04 — Contact</div>
+      <h2><span data-i18n="contact.heading">Let's build</span><br><span class="si" data-i18n="contact.heading2">something.</span></h2>
+      <p data-i18n="contact.desc">Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.</p>
       <div class="clinks">
         <a href="mailto:contact@bharbarasouza.com" class="clink">
           <span class="ci">&#x2709;</span> contact@bharbarasouza.com
@@ -643,78 +668,237 @@ footer p a { color:var(--accent3); text-decoration:none; }
     <div class="rev">
       <form class="cform" onsubmit="handleSend(event)">
         <div class="frow">
-          <div class="fg"><label>Name</label><input type="text" placeholder="Your name" /></div>
-          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" /></div>
+          <div class="fg"><label data-i18n="form.name">Name</label><input type="text" data-i18n-ph="form.name_ph" placeholder="Your name" /></div>
+          <div class="fg"><label data-i18n="form.email">Email</label><input type="email" data-i18n-ph="form.email_ph" placeholder="your@email.com" /></div>
         </div>
-        <div class="fg"><label>Subject</label><input type="text" placeholder="What's this about?" /></div>
-        <div class="fg"><label>Message</label><textarea placeholder="Tell me about your project..."></textarea></div>
-        <button type="submit" class="btn-send" id="sbtn">Send Message</button>
+        <div class="fg"><label data-i18n="form.subject">Subject</label><input type="text" data-i18n-ph="form.subject_ph" placeholder="What's this about?" /></div>
+        <div class="fg"><label data-i18n="form.message">Message</label><textarea data-i18n-ph="form.message_ph" placeholder="Tell me about your project..."></textarea></div>
+        <button type="submit" class="btn-send" id="sbtn" data-i18n="form.send">Send Message</button>
       </form>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>&#169; 2026 Bharbara Souza &#183; Open-sourced on <a href="https://github.com/bharbarasouza/" target="_blank">GitHub</a></p>
-  <a href="#home" class="back-top">&#8593; Top</a>
+  <p>&#169; 2026 Bharbara Souza &#183; <span data-i18n="footer.opensource">Open-sourced on</span> <a href="https://github.com/bharbarasouza/" target="_blank">GitHub</a></p>
+  <a href="#home" class="back-top" data-i18n="footer.top">&#8593; Top</a>
 </footer>
 
 <script>
-// Cursor
-const cur  = document.getElementById('cur');
-const ring = document.getElementById('cur-ring');
-let mx=0, my=0, rx=0, ry=0;
+// ── Translations
+var i18n = {
+  en: {
+    "nav.about":        "About",
+    "nav.portfolio":    "Portfolio",
+    "nav.experience":   "Experience",
+    "nav.contact":      "Contact",
+    "hero.eyebrow":     "Open to new opportunities",
+    "hero.desc":        "Transforming ideas into captivating, high-performance websites. Fusing design sensibility with technical craft to build digital experiences that inspire and convert.",
+    "hero.cta1":        "View Work",
+    "hero.cta2":        "Get in Touch",
+    "stats.years":      "Years building",
+    "stats.projects":   "Projects shipped",
+    "stats.tech":       "Technologies",
+    "stats.based":      "Based in Brazil",
+    "about.label":      "01 — About",
+    "about.p1":         "I'm a <strong>Web Developer</strong> focused on building clean, performant, and visually compelling web experiences from the ground up.",
+    "about.p2":         "Since 2022, I've been fully invested in the world of web development — a journey that genuinely fulfils me. I combine a strong eye for <strong>design</strong> with solid <strong>technical foundations</strong> to deliver work that looks great and works even better.",
+    "about.p3":         "Originally from <strong>Brazil</strong> and currently based here — I bring a global perspective and a collaborative spirit to every project. Let's connect and create something awesome together.",
+    "skills.frontend":  "Frontend",
+    "skills.backend":   "Backend & APIs",
+    "skills.tools":     "Tools & Workflow",
+    "chip.responsive":  "Responsive Design",
+    "chip.a11y":        "Web Accessibility",
+    "portfolio.label":  "02 — Portfolio",
+    "portfolio.heading":"Selected",
+    "portfolio.heading2":"work.",
+    "proj1.title":      "Ricardo Urbano — Coach",
+    "proj1.desc":       "Full website for a life coach with 10 years of experience. Features client testimonials, services overview, Calendly booking integration, and a free e-book download popup.",
+    "proj2.title":      "Personal Finance Dashboard",
+    "proj2.desc":       "Interactive dashboard for tracking expenses and income, with live charts, monthly summaries, and a REST API backend powered by PostgreSQL.",
+    "proj3.title":      "What's the Drizzle?",
+    "proj3.desc":       "Responsive weather app consuming the OpenWeather API. Clean UI with city search and live conditions. Built with vanilla JS and CSS Grid.",
+    "proj4.title":      "Agency Landing Page",
+    "proj4.desc":       "High-conversion marketing page with scroll animations, accessibility-first markup, and a Lighthouse performance score of 98+.",
+    "proj5.title":      "Headless Blog Platform",
+    "proj5.desc":       "MDX-powered blog with tag filtering, reading time estimates, dark mode, RSS feed, and static generation for maximum performance.",
+    "proj6.title":      "Task Management App",
+    "proj6.desc":       "Kanban-style task manager with drag-and-drop, real-time updates via WebSockets, user authentication, and team collaboration features.",
+    "proj.view":        "View Project",
+    "proj.demo":        "Live Demo",
+    "exp.label":        "03 — Experience",
+    "exp.heading":      "How I got",
+    "exp.heading2":     "here.",
+    "exp1.period":      "2023 — Present",
+    "exp1.company":     "Freelance",
+    "exp1.role":        "Web Developer",
+    "exp1.desc":        "Building end-to-end web projects for clients — from landing pages and portfolios to full-stack applications. Focused on clean code, performance, and accessibility.",
+    "exp2.period":      "2022 — 2023",
+    "exp2.company":     "Self-directed Learning",
+    "exp2.role":        "Full-Stack Foundations",
+    "exp2.desc":        "Deep dive into web development — HTML, CSS, JavaScript, React, Node.js, and databases. Built a portfolio of real projects and shipped first client work.",
+    "contact.label":    "04 — Contact",
+    "contact.heading":  "Let's build",
+    "contact.heading2": "something.",
+    "contact.desc":     "Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.",
+    "form.name":        "Name",
+    "form.name_ph":     "Your name",
+    "form.email":       "Email",
+    "form.email_ph":    "your@email.com",
+    "form.subject":     "Subject",
+    "form.subject_ph":  "What's this about?",
+    "form.message":     "Message",
+    "form.message_ph":  "Tell me about your project...",
+    "form.send":        "Send Message",
+    "form.sent":        "Message sent \u2713",
+    "footer.opensource":"Open-sourced on",
+    "footer.top":       "\u2191 Top"
+  },
+  pt: {
+    "nav.about":        "Sobre",
+    "nav.portfolio":    "Portfólio",
+    "nav.experience":   "Experiência",
+    "nav.contact":      "Contato",
+    "hero.eyebrow":     "Aberta a novas oportunidades",
+    "hero.desc":        "Transformando ideias em sites bonitos e de alta performance. Unindo sensibilidade de design com habilidade técnica para criar experiências digitais que inspiram e convertem.",
+    "hero.cta1":        "Ver Trabalhos",
+    "hero.cta2":        "Fale Comigo",
+    "stats.years":      "Anos de experiência",
+    "stats.projects":   "Projetos entregues",
+    "stats.tech":       "Tecnologias",
+    "stats.based":      "Baseada no Brasil",
+    "about.label":      "01 — Sobre",
+    "about.p1":         "Sou <strong>Desenvolvedora Web</strong> com foco em criar experiências digitais limpas, performáticas e visualmente marcantes do zero.",
+    "about.p2":         "Desde 2022, mergulhei de cabeça no mundo do desenvolvimento web — uma jornada que me realiza de verdade. Combino um olhar apurado para <strong>design</strong> com uma base <strong>técnica sólida</strong> para entregar projetos bonitos e que realmente funcionam.",
+    "about.p3":         "Nascida e criada no <strong>Brasil</strong>, trago uma perspectiva ampla e um espírito colaborativo para cada projeto. Vamos nos conectar e criar algo incrível juntos.",
+    "skills.frontend":  "Frontend",
+    "skills.backend":   "Backend & APIs",
+    "skills.tools":     "Ferramentas & Fluxo",
+    "chip.responsive":  "Design Responsivo",
+    "chip.a11y":        "Acessibilidade Web",
+    "portfolio.label":  "02 — Portfólio",
+    "portfolio.heading":"Trabalhos",
+    "portfolio.heading2":"selecionados.",
+    "proj1.title":      "Ricardo Urbano — Coach",
+    "proj1.desc":       "Site completo para coach de vida com 10 anos de experiência. Inclui depoimentos de clientes, apresentação de serviços, integração com Calendly para agendamento e pop-up de e-book gratuito.",
+    "proj2.title":      "Dashboard Financeiro",
+    "proj2.desc":       "Dashboard interativo para controle de despesas e receitas, com gráficos em tempo real, resumos mensais e backend em REST API com PostgreSQL.",
+    "proj3.title":      "What's the Drizzle?",
+    "proj3.desc":       "App de previsão do tempo responsivo, consumindo a API do OpenWeather. Interface limpa com busca por cidade e condições ao vivo. Feito com JS puro e CSS Grid.",
+    "proj4.title":      "Landing Page de Agência",
+    "proj4.desc":       "Página de marketing de alta conversão com animações de scroll, marcação acessível e pontuação 98+ no Lighthouse.",
+    "proj5.title":      "Plataforma de Blog Headless",
+    "proj5.desc":       "Blog em MDX com filtros por tag, tempo de leitura, modo escuro, feed RSS e geração estática para máxima performance.",
+    "proj6.title":      "App de Gestão de Tarefas",
+    "proj6.desc":       "Gerenciador de tarefas no estilo Kanban com drag-and-drop, atualizações em tempo real via WebSockets, autenticação e colaboração em equipe.",
+    "proj.view":        "Ver Projeto",
+    "proj.demo":        "Ver ao Vivo",
+    "exp.label":        "03 — Experiência",
+    "exp.heading":      "Como cheguei",
+    "exp.heading2":     "até aqui.",
+    "exp1.period":      "2023 — Presente",
+    "exp1.company":     "Freelance",
+    "exp1.role":        "Desenvolvedora Web",
+    "exp1.desc":        "Desenvolvimento de projetos web completos para clientes — de landing pages e portfólios a aplicações full-stack. Foco em código limpo, performance e acessibilidade.",
+    "exp2.period":      "2022 — 2023",
+    "exp2.company":     "Aprendizado Autodidata",
+    "exp2.role":        "Fundamentos Full-Stack",
+    "exp2.desc":        "Imersão em desenvolvimento web — HTML, CSS, JavaScript, React, Node.js e bancos de dados. Construí um portfólio de projetos reais e entreguei os primeiros trabalhos para clientes.",
+    "contact.label":    "04 — Contato",
+    "contact.heading":  "Vamos criar",
+    "contact.heading2": "algo juntos.",
+    "contact.desc":     "Tem um projeto em mente? Procura uma desenvolvedora que se importa com o resultado? Minha caixa de entrada está sempre aberta.",
+    "form.name":        "Nome",
+    "form.name_ph":     "Seu nome",
+    "form.email":       "E-mail",
+    "form.email_ph":    "seu@email.com",
+    "form.subject":     "Assunto",
+    "form.subject_ph":  "Do que se trata?",
+    "form.message":     "Mensagem",
+    "form.message_ph":  "Me conta sobre o seu projeto...",
+    "form.send":        "Enviar Mensagem",
+    "form.sent":        "Mensagem enviada \u2713",
+    "footer.opensource":"Código aberto no",
+    "footer.top":       "\u2191 Topo"
+  }
+};
+
+var currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+  // toggle button states
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+
+  var t = i18n[lang];
+
+  // text nodes
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  // page title
+  document.title = lang === 'pt'
+    ? 'Bharbara Souza — Desenvolvedora Web'
+    : 'Bharbara Souza — Web Developer';
+}
+
+// ── Cursor
+var cur  = document.getElementById('cur');
+var ring = document.getElementById('cur-ring');
+var mx=0, my=0, rx=0, ry=0;
 document.addEventListener('mousemove', function(e) {
   mx = e.clientX; my = e.clientY;
-  cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+  cur.style.left = mx+'px'; cur.style.top = my+'px';
 });
 (function loop() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top  = ry + 'px';
+  rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
   requestAnimationFrame(loop);
 })();
 document.querySelectorAll('a, button').forEach(function(el) {
-  el.addEventListener('mouseenter', function() {
-    cur.style.width = '5px'; cur.style.height = '5px';
-    ring.style.width = '58px'; ring.style.height = '58px';
-  });
-  el.addEventListener('mouseleave', function() {
-    cur.style.width = '12px'; cur.style.height = '12px';
-    ring.style.width = '38px'; ring.style.height = '38px';
-  });
+  el.addEventListener('mouseenter', function() { cur.style.width='5px'; cur.style.height='5px'; ring.style.width='58px'; ring.style.height='58px'; });
+  el.addEventListener('mouseleave', function() { cur.style.width='12px'; cur.style.height='12px'; ring.style.width='38px'; ring.style.height='38px'; });
 });
 
-// Parallax
+// ── Parallax
 var pEls = document.querySelectorAll('[data-speed]');
 window.addEventListener('scroll', function() {
   var y = window.scrollY;
   pEls.forEach(function(el) {
-    el.style.transform = 'translateY(' + (y * parseFloat(el.dataset.speed)) + 'px)';
+    el.style.transform = 'translateY('+(y*parseFloat(el.dataset.speed))+'px)';
   });
-}, { passive: true });
+}, {passive:true});
 
-// Scroll reveal
+// ── Scroll reveal
 var obs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e, i) {
-    if (e.isIntersecting) {
-      setTimeout(function() { e.target.classList.add('on'); }, i * 80);
-    }
+    if (e.isIntersecting) setTimeout(function() { e.target.classList.add('on'); }, i*80);
   });
-}, { threshold: 0.1 });
+}, {threshold:0.1});
 document.querySelectorAll('.rev, .rev-l').forEach(function(el) { obs.observe(el); });
 
-// Form
+// ── Form
 function handleSend(e) {
   e.preventDefault();
   var btn = document.getElementById('sbtn');
-  btn.textContent = 'Message sent \u2713';
+  btn.textContent = i18n[currentLang]['form.sent'];
   btn.style.background = 'var(--accent3)';
   btn.style.color = '#000';
   setTimeout(function() {
-    btn.textContent = 'Send Message';
+    btn.textContent = i18n[currentLang]['form.send'];
     btn.style.background = 'var(--accent)';
+    btn.style.color = '#000';
   }, 3000);
 }
 </script>

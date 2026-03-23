@@ -1,9 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bharbara Souza — Web Developer</title>
+
+<!-- Primary SEO -->
+<title>Bharbara Souza | Freelance Web Developer &amp; Landing Page Designer — Brazil</title>
+<meta name="description" content="Bharbara Souza is a freelance web developer based in Brazil specialising in SEO-optimised landing pages and web design for small businesses. Available for projects worldwide.">
+<meta name="keywords" content="freelance web developer Brazil, landing page designer, web design small business, desenvolvedora web freelance, criação de sites, landing page SEO, web developer Brazil, freelance developer, Bharbara Souza">
+<meta name="author" content="Bharbara Souza">
+<meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="en" href="https://bharbarasouza.com/">
+<link rel="alternate" hreflang="pt-BR" href="https://bharbarasouza.com/?lang=pt">
+<link rel="alternate" hreflang="x-default" href="https://bharbarasouza.com/">
+<link rel="canonical" href="https://bharbarasouza.com/">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp previews) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bharbarasouza.com/">
+<meta property="og:title" content="Bharbara Souza | Freelance Web Developer &amp; Landing Page Designer">
+<meta property="og:description" content="Freelance web developer based in Brazil. I build SEO-optimised landing pages and beautiful websites for small businesses worldwide.">
+<meta property="og:image" content="https://bharbarasouza.com/og-image.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:site_name" content="Bharbara Souza — Web Developer">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://bharbarasouza.com/">
+<meta name="twitter:title" content="Bharbara Souza | Freelance Web Developer &amp; Landing Page Designer">
+<meta name="twitter:description" content="Freelance web developer based in Brazil. SEO-optimised landing pages &amp; web design for small businesses worldwide.">
+<meta name="twitter:image" content="https://bharbarasouza.com/og-image.jpg">
+
+<!-- Geo targeting -->
+<meta name="geo.region" content="BR">
+<meta name="geo.placename" content="Brazil">
+<meta name="language" content="en, pt-BR">
+
+<!-- JSON-LD structured data — Person + WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://bharbarasouza.com/#person",
+      "name": "Bharbara Souza",
+      "url": "https://bharbarasouza.com/",
+      "image": "https://bharbarasouza.com/og-image.jpg",
+      "jobTitle": "Freelance Web Developer",
+      "description": "Freelance web developer based in Brazil specialising in SEO-optimised landing pages and web design for small businesses.",
+      "knowsAbout": ["Web Development","SEO","Landing Pages","HTML","CSS","JavaScript","React","Next.js","Branding"],
+      "knowsLanguage": ["en","pt-BR"],
+      "nationality": { "@type": "Country", "name": "Brazil" },
+      "sameAs": [
+        "https://www.linkedin.com/in/bharbarasouza/",
+        "https://github.com/bharbarasouza/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://bharbarasouza.com/#website",
+      "url": "https://bharbarasouza.com/",
+      "name": "Bharbara Souza — Web Developer",
+      "description": "Portfolio of Bharbara Souza, freelance web developer and landing page designer based in Brazil.",
+      "inLanguage": ["en","pt-BR"],
+      "author": { "@id": "https://bharbarasouza.com/#person" }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://bharbarasouza.com/#service",
+      "name": "Bharbara Souza Web Development",
+      "url": "https://bharbarasouza.com/",
+      "description": "Freelance web development services: SEO landing pages, web design for small businesses, and branding.",
+      "provider": { "@id": "https://bharbarasouza.com/#person" },
+      "areaServed": ["BR","Worldwide"],
+      "serviceType": ["Web Development","SEO Landing Pages","Web Design","Branding"],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "SEO Landing Page",
+          "description": "Custom SEO-optimised landing page for service professionals"
+        },
+        {
+          "@type": "Offer",
+          "name": "Web Design for Small Business",
+          "description": "Full responsive website design and development for small businesses"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<meta name="theme-color" content="#09090e">
+<meta name="color-scheme" content="dark">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -469,11 +560,12 @@ footer p a { color:var(--accent3); text-decoration:none; }
 </head>
 <body>
 
+<a href="#main-content" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:-999;" onfocus="this.style.cssText='position:fixed;top:0;left:0;width:auto;height:auto;padding:.5rem 1rem;background:var(--accent);color:#000;font-family:var(--font-m);font-size:.75rem;font-weight:700;z-index:9999;overflow:visible;'">Skip to content</a>
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="Main navigation">
   <a href="#" class="nav-logo">bharbara.dev</a>
   <div class="nav-right">
     <ul class="nav-links">
@@ -506,6 +598,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
 </nav>
 
 
+<main id="main-content">
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="p-layer">
@@ -668,7 +761,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <div class="proj-preview">
         <div class="pp-bar"><div class="pp-dot r"></div><div class="pp-dot y"></div><div class="pp-dot g"></div><div class="pp-url">ricardourbano.com.br</div></div>
         <div class="pp-iframe-wrap">
-          <iframe src="https://ricardourbano.com.br" scrolling="no" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+          <iframe src="https://ricardourbano.com.br" scrolling="no" tabindex="-1" aria-hidden="true" loading="lazy" title="Ricardo Urbano website preview"></iframe>
         </div>
       </div>
       <h3 data-i18n="proj1.title">Ricardo Urbano — Coach</h3>
@@ -801,10 +894,10 @@ footer p a { color:var(--accent3); text-decoration:none; }
         <a id="contact-email-link" class="clink">
           <span class="ci">&#x2709;</span> <span id="contact-email-text"></span>
         </a>
-        <a href="https://www.linkedin.com/in/bharbarasouza/" target="_blank" class="clink">
+        <a href="https://www.linkedin.com/in/bharbarasouza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of Bharbara Souza" class="clink">
           <span class="ci">in</span> linkedin.com/in/bharbarasouza
         </a>
-        <a href="https://github.com/bharbarasouza/" target="_blank" class="clink">
+        <a href="https://github.com/bharbarasouza/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile of Bharbara Souza" class="clink">
           <span class="ci">&#x2325;</span> github.com/bharbarasouza
         </a>
       </div>
@@ -835,7 +928,8 @@ footer p a { color:var(--accent3); text-decoration:none; }
   </div>
 </div>
 
-<footer>
+</main>
+<footer role="contentinfo">
   <p>&#169; 2026 Bharbara Souza &#183; <span data-i18n="footer.opensource">Open-sourced on</span> <a href="https://github.com/bharbarasouza/" target="_blank">GitHub</a></p>
   <a href="#home" class="back-top" data-i18n="footer.top">&#8593; Top</a>
 </footer>

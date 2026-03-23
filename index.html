@@ -406,9 +406,52 @@ footer p a { color:var(--accent3); text-decoration:none; }
 .rev.on, .rev-l.on { opacity:1; transform:none; }
 
 /* MOBILE */
+
+
+/* HAMBURGER / MOBILE NAV */
+.hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; background: none; border: none; cursor: pointer;
+  padding: 4px; z-index: 300;
+}
+.nav-mobile-right {
+  display: none; align-items: center; gap: .8rem;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease, background .2s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-drawer {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 250; background: rgba(9,9,14,.97); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+  opacity: 0; transition: opacity .3s ease;
+}
+.mobile-drawer.open { opacity: 1; }
+.mobile-drawer ul { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.mobile-drawer ul a {
+  font-family: var(--font-m); font-size: 1rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+  transition: color .2s;
+}
+.mobile-drawer ul a:hover { color: var(--accent); }
+.mobile-drawer .lang-toggle { border-color: var(--border); }
+
 @media(max-width:860px){
-  nav { padding:1.2rem 1.5rem; }
-  .nav-links { gap:1.2rem; }
+  #cur, #cur-ring { display: none !important; }
+  body { cursor: auto !important; }
+  * { cursor: auto !important; }
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-right { display: none; }
+  .nav-mobile-right { display: flex; }
+  .hamburger { display: flex; }
+  .mobile-drawer { display: flex; pointer-events: none; }
+  .mobile-drawer.open { pointer-events: auto; }
   .hero { grid-template-columns:1fr; padding:8rem 1.5rem 4rem; }
   .hero-right { display:none; }
   .stats-bar { grid-template-columns:1fr 1fr; }
@@ -443,7 +486,30 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <button class="lang-btn"        id="btn-pt" onclick="setLang('pt')">PT</button>
     </div>
   </div>
+  <div class="nav-mobile-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-en-m" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btn-pt-m" onclick="setLang('pt')">PT</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobile-drawer" onclick="handleDrawerClick(event)">
+  <button onclick="toggleMenu()" aria-label="Close menu" style="position:fixed;top:1.4rem;right:1.5rem;background:none;border:none;cursor:pointer;padding:4px;z-index:400;display:flex;flex-direction:column;gap:5px;">
+    <span style="display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transform:translateY(7px) rotate(45deg);"></span>
+    <span style="display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transform:translateY(-7px) rotate(-45deg);"></span>
+  </button>
+  <ul>
+    <li><a href="#about"      data-i18n="nav.about"      onclick="toggleMenu()">About</a></li>
+    <li><a href="#portfolio"  data-i18n="nav.portfolio"  onclick="toggleMenu()">Portfolio</a></li>
+    <li><a href="#experience" data-i18n="nav.experience" onclick="toggleMenu()">Experience</a></li>
+    <li><a href="#contact"    data-i18n="nav.contact"    onclick="toggleMenu()">Contact</a></li>
+  </ul>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -926,13 +992,32 @@ var i18n = {
 
 var currentLang = 'en';
 
+function handleDrawerClick(e) {
+  if (e.target === document.getElementById('mobile-drawer')) toggleMenu();
+}
+
+function toggleMenu() {
+  var btn    = document.getElementById('hamburger');
+  var drawer = document.getElementById('mobile-drawer');
+  var isOpen = drawer.classList.contains('open');
+  btn.classList.toggle('open', !isOpen);
+  drawer.classList.toggle('open', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+
 function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
 
-  // toggle button states
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  // sync all lang buttons (desktop + mobile)
+  ['btn-en','btn-en-m'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('active', lang === 'en');
+  });
+  ['btn-pt','btn-pt-m'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('active', lang === 'pt');
+  });
 
   var t = i18n[lang];
 
@@ -1024,25 +1109,49 @@ function handleSend(e) {
   var form = e.target;
   btn.textContent = '...';
   btn.disabled = true;
+
+  var data = {
+    name:    form.querySelector('[name="name"]').value,
+    email:   form.querySelector('[name="email"]').value,
+    subject: form.querySelector('[name="subject"]').value,
+    message: form.querySelector('[name="message"]').value
+  };
+
   fetch('https://formspree.io/f/mwvrgkjb', {
     method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
+    body: JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   }).then(function(res) {
-    if (res.ok) {
+    return res.json().then(function(json) {
+      return { ok: res.ok, json: json };
+    });
+  }).then(function(result) {
+    if (result.ok) {
       form.reset();
       btn.textContent = i18n[currentLang]['form.send'];
       btn.disabled = false;
       openThanks();
     } else {
-      btn.textContent = '✕ Erro — tente novamente';
+      btn.textContent = '✕ ' + (result.json.error || 'Erro — tente novamente');
       btn.style.background = 'var(--accent2)';
       btn.disabled = false;
+      setTimeout(function() {
+        btn.textContent = i18n[currentLang]['form.send'];
+        btn.style.background = 'var(--accent)';
+      }, 4000);
     }
-  }).catch(function() {
+  }).catch(function(err) {
+    console.error('Form error:', err);
     btn.textContent = '✕ Erro — tente novamente';
     btn.style.background = 'var(--accent2)';
     btn.disabled = false;
+    setTimeout(function() {
+      btn.textContent = i18n[currentLang]['form.send'];
+      btn.style.background = 'var(--accent)';
+    }, 4000);
   });
 }
 </script>

@@ -411,36 +411,39 @@ footer p a { color:var(--accent3); text-decoration:none; }
 /* HAMBURGER / MOBILE NAV */
 .hamburger {
   display: none; flex-direction: column; justify-content: center;
-  gap: 5px; background: none; border: none; cursor: pointer;
-  padding: 4px; z-index: 300;
-}
-.nav-mobile-right {
-  display: none; align-items: center; gap: .8rem;
+  gap: 5px; background: none; border: none; cursor: pointer; padding: 4px;
 }
 .hamburger span {
   display: block; width: 22px; height: 2px;
   background: var(--text); border-radius: 2px;
-  transition: transform .3s ease, opacity .3s ease, background .2s;
+  transition: transform .25s ease, opacity .25s ease;
 }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.mobile-drawer {
-  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 250; background: rgba(9,9,14,.97); backdrop-filter: blur(20px);
-  flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
-  opacity: 0; transition: opacity .3s ease;
+.nav-mobile-right {
+  display: none; align-items: center; gap: .8rem;
 }
-.mobile-drawer.open { opacity: 1; }
-.mobile-drawer ul { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
-.mobile-drawer ul a {
-  font-family: var(--font-m); font-size: 1rem; letter-spacing: .22em;
+
+/* compact dropdown */
+.mobile-dropdown {
+  display: none;
+  position: absolute; top: 100%; right: 0; left: 0;
+  background: rgba(9,9,14,.97); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  flex-direction: column; padding: 1rem 1.5rem 1.5rem;
+  gap: 0;
+}
+.mobile-dropdown.open { display: flex; }
+.mobile-dropdown a {
+  font-family: var(--font-m); font-size: .78rem; letter-spacing: .18em;
   text-transform: uppercase; color: var(--muted); text-decoration: none;
+  padding: .85rem 0; border-bottom: 1px solid var(--border2);
   transition: color .2s;
 }
-.mobile-drawer ul a:hover { color: var(--accent); }
-.mobile-drawer .lang-toggle { border-color: var(--border); }
+.mobile-dropdown a:last-child { border-bottom: none; }
+.mobile-dropdown a:hover { color: var(--accent); }
 
 @media(max-width:860px){
   #cur, #cur-ring { display: none !important; }
@@ -450,8 +453,6 @@ footer p a { color:var(--accent3); text-decoration:none; }
   .nav-right { display: none; }
   .nav-mobile-right { display: flex; }
   .hamburger { display: flex; }
-  .mobile-drawer { display: flex; pointer-events: none; }
-  .mobile-drawer.open { pointer-events: auto; }
   .hero { grid-template-columns:1fr; padding:8rem 1.5rem 4rem; }
   .hero-right { display:none; }
   .stats-bar { grid-template-columns:1fr 1fr; }
@@ -495,21 +496,15 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <span></span><span></span><span></span>
     </button>
   </div>
+  <!-- compact dropdown -->
+  <div class="mobile-dropdown" id="mobile-dropdown">
+    <a href="#about"      data-i18n="nav.about"      onclick="toggleMenu()">About</a>
+    <a href="#portfolio"  data-i18n="nav.portfolio"  onclick="toggleMenu()">Portfolio</a>
+    <a href="#experience" data-i18n="nav.experience" onclick="toggleMenu()">Experience</a>
+    <a href="#contact"    data-i18n="nav.contact"    onclick="toggleMenu()">Contact</a>
+  </div>
 </nav>
 
-<!-- MOBILE DRAWER -->
-<div class="mobile-drawer" id="mobile-drawer" onclick="handleDrawerClick(event)">
-  <button onclick="toggleMenu()" aria-label="Close menu" style="position:fixed;top:1.4rem;right:1.5rem;background:none;border:none;cursor:pointer;padding:4px;z-index:400;display:flex;flex-direction:column;gap:5px;">
-    <span style="display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transform:translateY(7px) rotate(45deg);"></span>
-    <span style="display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transform:translateY(-7px) rotate(-45deg);"></span>
-  </button>
-  <ul>
-    <li><a href="#about"      data-i18n="nav.about"      onclick="toggleMenu()">About</a></li>
-    <li><a href="#portfolio"  data-i18n="nav.portfolio"  onclick="toggleMenu()">Portfolio</a></li>
-    <li><a href="#experience" data-i18n="nav.experience" onclick="toggleMenu()">Experience</a></li>
-    <li><a href="#contact"    data-i18n="nav.contact"    onclick="toggleMenu()">Contact</a></li>
-  </ul>
-</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -803,8 +798,8 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <h2><span data-i18n="contact.heading">Let's build</span><br><span class="si" data-i18n="contact.heading2">something.</span></h2>
       <p data-i18n="contact.desc">Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.</p>
       <div class="clinks">
-        <a href="/cdn-cgi/l/email-protection#43202c2d3722203703212b223121223122302c3639226d202c2e" class="clink">
-          <span class="ci">&#x2709;</span> <span class="__cf_email__" data-cfemail="81e2eeeff5e0e2f5c1e3e9e0f3e3e0f3e0f2eef4fbe0afe2eeec">[email&#160;protected]</span>
+        <a id="contact-email-link" class="clink">
+          <span class="ci">&#x2709;</span> <span id="contact-email-text"></span>
         </a>
         <a href="https://www.linkedin.com/in/bharbarasouza/" target="_blank" class="clink">
           <span class="ci">in</span> linkedin.com/in/bharbarasouza
@@ -845,7 +840,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
   <a href="#home" class="back-top" data-i18n="footer.top">&#8593; Top</a>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── Translations
 var i18n = {
   en: {
@@ -992,18 +987,23 @@ var i18n = {
 
 var currentLang = 'en';
 
-function handleDrawerClick(e) {
-  if (e.target === document.getElementById('mobile-drawer')) toggleMenu();
-}
-
 function toggleMenu() {
-  var btn    = document.getElementById('hamburger');
-  var drawer = document.getElementById('mobile-drawer');
-  var isOpen = drawer.classList.contains('open');
+  var btn      = document.getElementById('hamburger');
+  var dropdown = document.getElementById('mobile-dropdown');
+  var isOpen   = dropdown.classList.contains('open');
   btn.classList.toggle('open', !isOpen);
-  drawer.classList.toggle('open', !isOpen);
-  document.body.style.overflow = isOpen ? '' : 'hidden';
+  dropdown.classList.toggle('open', !isOpen);
 }
+// close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  var btn      = document.getElementById('hamburger');
+  var dropdown = document.getElementById('mobile-dropdown');
+  if (dropdown && dropdown.classList.contains('open') &&
+      !dropdown.contains(e.target) && !btn.contains(e.target)) {
+    btn.classList.remove('open');
+    dropdown.classList.remove('open');
+  }
+});
 
 function setLang(lang) {
   currentLang = lang;
@@ -1154,6 +1154,17 @@ function handleSend(e) {
     }, 4000);
   });
 }
+// Build email to avoid Cloudflare obfuscation
+(function() {
+  var u = 'contact';
+  var d = 'bharbarasouza' + '.' + 'com';
+  var e = u + '@' + d;
+  var link = document.getElementById('contact-email-link');
+  var text = document.getElementById('contact-email-text');
+  if (link) link.href = 'mailto:' + e;
+  if (text) text.textContent = e;
+})();
+
 </script>
 </body>
 </html>

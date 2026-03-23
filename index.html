@@ -737,8 +737,8 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <h2><span data-i18n="contact.heading">Let's build</span><br><span class="si" data-i18n="contact.heading2">something.</span></h2>
       <p data-i18n="contact.desc">Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.</p>
       <div class="clinks">
-        <a href="mailto:contact@bharbarasouza.com" class="clink">
-          <span class="ci">&#x2709;</span> contact@bharbarasouza.com
+        <a href="/cdn-cgi/l/email-protection#43202c2d3722203703212b223121223122302c3639226d202c2e" class="clink">
+          <span class="ci">&#x2709;</span> <span class="__cf_email__" data-cfemail="81e2eeeff5e0e2f5c1e3e9e0f3e3e0f3e0f2eef4fbe0afe2eeec">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/bharbarasouza/" target="_blank" class="clink">
           <span class="ci">in</span> linkedin.com/in/bharbarasouza
@@ -749,25 +749,37 @@ footer p a { color:var(--accent3); text-decoration:none; }
       </div>
     </div>
     <div class="rev">
-      <form class="cform" onsubmit="handleSend(event)">
+      <form class="cform" action="https://formspree.io/f/mwvrgkjb" method="POST" onsubmit="handleSend(event)">
         <div class="frow">
-          <div class="fg"><label data-i18n="form.name">Name</label><input type="text" data-i18n-ph="form.name_ph" placeholder="Your name" /></div>
-          <div class="fg"><label data-i18n="form.email">Email</label><input type="email" data-i18n-ph="form.email_ph" placeholder="your@email.com" /></div>
+          <div class="fg"><label data-i18n="form.name">Name</label><input type="text" name="name" data-i18n-ph="form.name_ph" placeholder="Your name" required /></div>
+          <div class="fg"><label data-i18n="form.email">Email</label><input type="email" name="email" data-i18n-ph="form.email_ph" placeholder="your@email.com" required /></div>
         </div>
-        <div class="fg"><label data-i18n="form.subject">Subject</label><input type="text" data-i18n-ph="form.subject_ph" placeholder="What's this about?" /></div>
-        <div class="fg"><label data-i18n="form.message">Message</label><textarea data-i18n-ph="form.message_ph" placeholder="Tell me about your project..."></textarea></div>
+        <div class="fg"><label data-i18n="form.subject">Subject</label><input type="text" name="subject" data-i18n-ph="form.subject_ph" placeholder="What's this about?" /></div>
+        <div class="fg"><label data-i18n="form.message">Message</label><textarea name="message" data-i18n-ph="form.message_ph" placeholder="Tell me about your project..." required></textarea></div>
         <button type="submit" class="btn-send" id="sbtn" data-i18n="form.send">Send Message</button>
       </form>
     </div>
   </div>
 </section>
 
+<!-- THANK YOU POPUP -->
+<div id="ty-overlay" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(9,9,14,.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+  <div id="ty-card" style="background:var(--surface);border:1px solid var(--border);max-width:480px;width:90%;padding:3.5rem;position:relative;text-align:center;transform:translateY(20px);opacity:0;transition:transform .4s ease,opacity .4s ease;">
+    <div style="font-size:2.2rem;margin-bottom:1.2rem;">&#x2713;</div>
+    <h3 id="ty-title" style="font-family:var(--font-d);font-size:1.6rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.8rem;color:var(--accent);"></h3>
+    <p id="ty-msg" style="font-family:var(--font-m);font-size:.8rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;letter-spacing:.03em;"></p>
+    <button onclick="closeThanks()" style="background:var(--accent);color:#000;font-family:var(--font-m);font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.85rem 2rem;border:none;cursor:pointer;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));transition:background .2s;" id="ty-btn"></button>
+    <div style="position:absolute;top:-6px;left:-6px;width:28px;height:28px;border-top:2px solid var(--accent);border-left:2px solid var(--accent);"></div>
+    <div style="position:absolute;bottom:-6px;right:-6px;width:28px;height:28px;border-bottom:2px solid var(--accent);border-right:2px solid var(--accent);"></div>
+  </div>
+</div>
+
 <footer>
   <p>&#169; 2026 Bharbara Souza &#183; <span data-i18n="footer.opensource">Open-sourced on</span> <a href="https://github.com/bharbarasouza/" target="_blank">GitHub</a></p>
   <a href="#home" class="back-top" data-i18n="footer.top">&#8593; Top</a>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── Translations
 var i18n = {
   en: {
@@ -834,6 +846,9 @@ var i18n = {
     "form.message_ph":  "Tell me about your project...",
     "form.send":        "Send Message",
     "form.sent":        "Message sent \u2713",
+    "popup.title":      "Message received!",
+    "popup.msg":        "Thank you for reaching out. I'll get back to you within 24 hours.",
+    "popup.btn":        "Close",
     "footer.opensource":"Open-sourced on",
     "footer.top":       "\u2191 Top"
   },
@@ -901,6 +916,9 @@ var i18n = {
     "form.message_ph":  "Me conta sobre o seu projeto...",
     "form.send":        "Enviar Mensagem",
     "form.sent":        "Mensagem enviada \u2713",
+    "popup.title":      "Mensagem recebida!",
+    "popup.msg":        "Obrigada pelo contato. Retorno em até 24 horas.",
+    "popup.btn":        "Fechar",
     "footer.opensource":"Código aberto no",
     "footer.top":       "\u2191 Topo"
   }
@@ -971,18 +989,61 @@ var obs = new IntersectionObserver(function(entries) {
 }, {threshold:0.1});
 document.querySelectorAll('.rev, .rev-l').forEach(function(el) { obs.observe(el); });
 
+// ── Popup
+function openThanks() {
+  var t = i18n[currentLang];
+  document.getElementById('ty-title').textContent = t['popup.title'];
+  document.getElementById('ty-msg').textContent   = t['popup.msg'];
+  document.getElementById('ty-btn').textContent   = t['popup.btn'];
+  var overlay = document.getElementById('ty-overlay');
+  var card    = document.getElementById('ty-card');
+  overlay.style.display = 'flex';
+  setTimeout(function() {
+    card.style.transform = 'translateY(0)';
+    card.style.opacity   = '1';
+  }, 10);
+}
+function closeThanks() {
+  var overlay = document.getElementById('ty-overlay');
+  var card    = document.getElementById('ty-card');
+  card.style.transform = 'translateY(20px)';
+  card.style.opacity   = '0';
+  setTimeout(function() { overlay.style.display = 'none'; }, 350);
+}
+document.getElementById('ty-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeThanks();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeThanks();
+});
+
 // ── Form
 function handleSend(e) {
   e.preventDefault();
-  var btn = document.getElementById('sbtn');
-  btn.textContent = i18n[currentLang]['form.sent'];
-  btn.style.background = 'var(--accent3)';
-  btn.style.color = '#000';
-  setTimeout(function() {
-    btn.textContent = i18n[currentLang]['form.send'];
-    btn.style.background = 'var(--accent)';
-    btn.style.color = '#000';
-  }, 3000);
+  var btn  = document.getElementById('sbtn');
+  var form = e.target;
+  btn.textContent = '...';
+  btn.disabled = true;
+  fetch('https://formspree.io/f/mwvrgkjb', {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(function(res) {
+    if (res.ok) {
+      form.reset();
+      btn.textContent = i18n[currentLang]['form.send'];
+      btn.disabled = false;
+      openThanks();
+    } else {
+      btn.textContent = '✕ Erro — tente novamente';
+      btn.style.background = 'var(--accent2)';
+      btn.disabled = false;
+    }
+  }).catch(function() {
+    btn.textContent = '✕ Erro — tente novamente';
+    btn.style.background = 'var(--accent2)';
+    btn.disabled = false;
+  });
 }
 </script>
 </body>

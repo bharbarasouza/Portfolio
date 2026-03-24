@@ -558,6 +558,14 @@ footer p a { color:var(--accent3); text-decoration:none; }
   .frow { grid-template-columns:1fr; }
   footer { flex-direction:column; gap:1rem; text-align:center; padding:2rem 1.5rem; }
 }
+
+/* Clickable card — full-cover anchor */
+.proj-card { position: relative; }
+.proj-card-link {
+  position: absolute; inset: 0; z-index: 1;
+  display: block; cursor: none;
+}
+.proj-link { position: relative; z-index: 2; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -658,7 +666,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
   <div class="about-grid">
     <div class="rev-l">
       <div class="sec-label" data-i18n="about.label">01 — About</div>
-      <h2>Code.<br><span class="si2">Craft.</span><br>Create.</h2>
+      <h2 data-i18n="about.h2">Code.<br><span class="si2">Craft.</span><br>Create.</h2>
       <div class="about-text">
         <p data-i18n="about.p1">
           I'm a <strong>Web Developer</strong> focused on building clean, performant, and visually compelling web experiences from the ground up.
@@ -754,7 +762,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
 <section id="value-prop" style="padding:5rem 4rem;background:var(--surface);">
   <div class="rev" style="text-align:center;max-width:640px;margin:0 auto 3.5rem;">
     <div class="sec-label" style="justify-content:center;" data-i18n="value.label">What I deliver</div>
-    <h2 data-i18n-html="value.h2">Not just websites.<br><span class="si">Results.</span></h2>
+    <h2 data-i18n="value.h2">Not just websites.<br><span class="si">Results.</span></h2>
     <p style="font-size:.95rem;color:var(--muted);line-height:1.9;margin-top:1rem;" data-i18n="value.sub">Every project I build comes with the same commitment: pixel-perfect execution, found on Google, and everything the client actually needs.</p>
   </div>
   <div class="rev" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border);">
@@ -823,6 +831,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
   <div class="proj-grid">
 
     <div class="proj-card rev">
+      <a href="https://ricardourbano.com.br/" target="_blank" rel="noopener" class="proj-card-link" aria-label="View Ricardo Urbano project"></a>
       <div class="proj-num">001</div>
       <div class="proj-preview">
         <div class="pp-bar"><div class="pp-dot r"></div><div class="pp-dot y"></div><div class="pp-dot g"></div><div class="pp-url">ricardourbano.com.br</div></div>
@@ -840,6 +849,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
     </div>
 
     <div class="proj-card l2 rev">
+      <a href="https://dentista-website.netlify.app/" target="_blank" rel="noopener" class="proj-card-link" aria-label="View Dra. Ana Lívia project"></a>
       <div class="proj-num">002</div>
       <div class="proj-preview">
         <div class="pp-bar"><div class="pp-dot r"></div><div class="pp-dot y"></div><div class="pp-dot g"></div><div class="pp-url">dentista-website.netlify.app</div></div>
@@ -857,6 +867,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
     </div>
 
     <div class="proj-card l3 rev">
+      <a href="https://whatsthedrizzle.netlify.app/" target="_blank" rel="noopener" class="proj-card-link" aria-label="View What's the Drizzle project"></a>
       <div class="proj-num">003</div>
       <div class="proj-preview">
         <div class="pp-bar"><div class="pp-dot r"></div><div class="pp-dot y"></div><div class="pp-dot g"></div><div class="pp-url">whatsthedrizzle.netlify.app</div></div>
@@ -872,6 +883,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
     </div>
 
     <div class="proj-card rev">
+      <a href="#" class="proj-card-link" aria-label="View Agency Landing Page project"></a>
       <div class="proj-num">004</div>
       <div class="proj-preview">
         <div class="pp-bar"><div class="pp-dot r"></div><div class="pp-dot y"></div><div class="pp-dot g"></div><div class="pp-url">agency-landing.vercel.app</div></div>
@@ -887,6 +899,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
     </div>
 
     <div class="proj-card l2 rev">
+      <a href="#" class="proj-card-link" aria-label="View Headless Blog project"></a>
       <div class="proj-num">005</div>
       <div class="proj-preview">
         <div class="pp-bar"><div class="pp-dot r"></div><div class="pp-dot y"></div><div class="pp-dot g"></div><div class="pp-url">my-blog.vercel.app</div></div>
@@ -902,6 +915,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
     </div>
 
     <div class="proj-card l3 rev">
+      <a href="#" class="proj-card-link" aria-label="View Task Management App project"></a>
       <div class="proj-num">006</div>
       <div class="proj-preview">
         <div class="pp-bar"><div class="pp-dot r"></div><div class="pp-dot y"></div><div class="pp-dot g"></div><div class="pp-url">taskboard.app</div></div>
@@ -1019,6 +1033,7 @@ var i18n = {
     "stats.tech":       "Technologies",
     "stats.based":      "Based in Brazil",
     "about.label":      "01 — About",
+    "about.h2":         "Code.<br><span class='si2'>Craft.</span><br>Create.",
     "about.p1":         "I'm a <strong>Web Developer</strong> focused on building clean, performant, and visually compelling web experiences from the ground up.",
     "about.p2":         "Since 2022, I've been fully invested in the world of web development — a journey that genuinely fulfils me. I combine a strong eye for <strong>design</strong> with solid <strong>technical foundations</strong> to deliver work that looks great and works even better.",
     "about.p3":         "Originally from <strong>Brazil</strong> and currently based here — I bring a global perspective and a collaborative spirit to every project. Let's connect and create something awesome together.",
@@ -1100,6 +1115,7 @@ var i18n = {
     "stats.tech":       "Tecnologias",
     "stats.based":      "Baseada no Brasil",
     "about.label":      "01 — Sobre",
+    "about.h2":         "C\u00f3digo.<br><span class='si2'>Arte.</span><br>Criar.",
     "about.p1":         "Sou <strong>Desenvolvedora Web</strong> com foco em criar experiências digitais limpas, performáticas e visualmente marcantes do zero.",
     "about.p2":         "Desde 2022, mergulhei de cabeça no mundo do desenvolvimento web — uma jornada que me realiza de verdade. Combino um olhar apurado para <strong>design</strong> com uma base <strong>técnica sólida</strong> para entregar projetos bonitos e que realmente funcionam.",
     "about.p3":         "Nascida e criada no <strong>Brasil</strong>, trago uma perspectiva ampla e um espírito colaborativo para cada projeto. Vamos nos conectar e criar algo incrível juntos.",

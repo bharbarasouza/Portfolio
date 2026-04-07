@@ -981,7 +981,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <h2><span data-i18n="contact.heading">Let's build</span><br><span class="si" data-i18n="contact.heading2">something.</span></h2>
       <p data-i18n="contact.desc">Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.</p>
       <div class="clinks">
-        <a id="contact-email-link" href="/cdn-cgi/l/email-protection#61020e0f15000215210309001303001300120e141b004f020e0c" class="clink">
+        <a id="contact-email-link" href="mailto:contact@bharbarasouza.com" class="clink">
           <span class="ci">&#x2709;</span> <span class="__cf_email__" data-cfemail="21424e4f55404255614349405343405340524e545b400f424e4c">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/bharbarasouza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of Bharbara Souza" class="clink">
@@ -1365,4 +1365,12 @@ function handleSend(e) {
 // Build email to avoid Cloudflare obfuscation
 (function() {
   var u = 'contact';
-  var d = 'bharbarasouza' + '.' + '
+  var d = 'bharbarasouza' + '.' + 'com';
+  var e = u + '@' + d;
+  var link = document.getElementById('contact-email-link');
+  if (link) link.href = 'mailto:' + e;
+})();
+
+</script>
+</body>
+</html>

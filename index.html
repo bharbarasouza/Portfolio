@@ -122,7 +122,7 @@
 html { scroll-behavior: smooth; }
 body {
   background: var(--bg); color: var(--text);
-  font-family: var(--font-d); overflow-x: hidden; cursor: none;
+  font-family: var(--font-d); cursor: none;
 }
 
 /* CURSOR */
@@ -540,7 +540,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
 
 @media(max-width:860px){
   #cur, #cur-ring { display: none !important; }
-  body { cursor: auto !important; overflow-x: hidden !important; }
+  body { cursor: auto !important; }
   * { cursor: auto !important; }
   nav { padding: 1.2rem 1.5rem; }
   .nav-right { display: none; }
@@ -582,6 +582,11 @@ footer p a { color:var(--accent3); text-decoration:none; }
   display: block; cursor: none;
 }
 .proj-link { position: relative; z-index: 2; pointer-events: none; }
+
+/* value prop grid */
+.vp-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5px; background:var(--border); }
+@media(max-width:860px){ .vp-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:480px){ .vp-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -624,7 +629,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
 </nav>
 
 
-<main id="main-content">
+<main id="main-content" style="overflow-x:hidden;">
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="p-layer">
@@ -789,7 +794,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
     <h2 data-i18n="value.h2">Not just websites.<br><span class="si">Results.</span></h2>
     <p style="font-size:.95rem;color:var(--muted);line-height:1.9;margin-top:1rem;" data-i18n="value.sub">Every project I build comes with the same commitment: pixel-perfect execution, found on Google, and everything the client actually needs.</p>
   </div>
-  <div class="rev" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border);">
+  <div class="rev vp-grid">
 
     <div style="background:var(--bg);padding:2.5rem 2rem;transition:background .3s;" onmouseenter="this.style.background='var(--surface2)'" onmouseleave="this.style.background='var(--bg)'">
       <div style="margin-bottom:1.2rem;">
@@ -1005,7 +1010,7 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <h2><span data-i18n="contact.heading">Let's build</span><br><span class="si" data-i18n="contact.heading2">something.</span></h2>
       <p data-i18n="contact.desc">Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.</p>
       <div class="clinks">
-        <a id="contact-email-link" href="/cdn-cgi/l/email-protection#e0838f8e94818394a08288819282819281938f959a81ce838f8d" class="clink">
+        <a id="contact-email-link" href="mailto:contact@bharbarasouza.com" class="clink">
           <span class="ci">&#x2709;</span> <span class="__cf_email__" data-cfemail="0f6c60617b6e6c7b4f6d676e7d6d6e7d6e7c607a756e216c6062">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/bharbarasouza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of Bharbara Souza" class="clink">
@@ -1386,4 +1391,14 @@ function handleSend(e) {
     }, 4000);
   });
 }
-// Build email to avoid
+// Build email to avoid Cloudflare obfuscation
+(function() {
+  var u = 'contact';
+  var d = 'bharbarasouza' + '.' + 'com';
+  var e = u + '@' + d;
+  var link = document.getElementById('contact-email-link');
+  if (link) link.href = 'mailto:' + e;
+})();
+</script>
+</body>
+</html>

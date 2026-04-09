@@ -1010,8 +1010,8 @@ footer p a { color:var(--accent3); text-decoration:none; }
       <h2><span data-i18n="contact.heading">Let's build</span><br><span class="si" data-i18n="contact.heading2">something.</span></h2>
       <p data-i18n="contact.desc">Have a project in mind? Looking for a developer who cares about craft? My inbox is always open.</p>
       <div class="clinks">
-        <a id="contact-email-link" href="mailto:contact@bharbarasouza.com" class="clink">
-          <span class="ci">&#x2709;</span> <span class="__cf_email__" data-cfemail="0f6c60617b6e6c7b4f6d676e7d6d6e7d6e7c607a756e216c6062">[email&#160;protected]</span>
+        <a id="contact-email-link" class="clink">
+          <span class="ci">&#x2709;</span> <span id="contact-email-text"></span>
         </a>
         <a href="https://www.linkedin.com/in/bharbarasouza/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile of Bharbara Souza" class="clink">
           <span class="ci">in</span> linkedin.com/in/bharbarasouza
@@ -1397,7 +1397,9 @@ function handleSend(e) {
   var d = 'bharbarasouza' + '.' + 'com';
   var e = u + '@' + d;
   var link = document.getElementById('contact-email-link');
+  var text = document.getElementById('contact-email-text');
   if (link) link.href = 'mailto:' + e;
+  if (text) text.textContent = e;
 })();
 </script>
 </body>

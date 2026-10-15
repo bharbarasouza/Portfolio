@@ -130,7 +130,7 @@ main { min-width: 0; }
 .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 0 72px; }
 .name {
   font-weight: 300;
-  font-size: clamp(64px, 14.5vw, 232px);
+  font-size: clamp(64px, 11.5vw, 190px);
   line-height: .86;
   letter-spacing: -0.035em;
   margin-left: -0.04em;
@@ -140,16 +140,18 @@ main { min-width: 0; }
 .name .line:nth-child(2) span { animation-delay: .12s; font-style: italic; }
 @keyframes rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
 
-.hero-foot {
-  margin-top: 56px;
-  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: var(--gutter); align-items: end;
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) clamp(240px, 24vw, 340px);
+  column-gap: var(--gutter); row-gap: 56px; align-items: end;
 }
-.hero-foot p { font-size: clamp(21px, 2vw, 26px); line-height: 1.4; max-width: 30ch; font-weight: 300; }
+.portrait { margin: 0; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; filter: grayscale(1); animation: fade 1.4s ease .3s both; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.hero-grid > p { align-self: start; padding-top: 10px;  font-size: clamp(21px, 2vw, 26px); line-height: 1.4; max-width: 30ch; font-weight: 300; }
 
 /* Fact list, styled like a wall label */
-.facts { display: grid; gap: 14px; font-size: 16px; }
-.facts div { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 16px; border-top: 1px solid var(--rule); padding-top: 10px; }
+.facts { display: grid; gap: 12px; font-size: 16px; align-self: start; }
+.facts div { display: grid; gap: 2px; border-top: 1px solid var(--rule); padding-top: 10px; }
 .facts dt { color: var(--grey); font-style: italic; }
 
 /* Sections */
@@ -220,19 +222,21 @@ footer { border-top: 1px solid var(--black); padding: 28px 0 40px; display: flex
 @media (max-width: 960px) {
   .frame { grid-template-columns: minmax(0, 1fr); }
   .index { display: none; }
-  .hero-foot, .works, .feature, .contact { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid, .works, .feature, .contact { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid { row-gap: 40px; }
+  .portrait { max-width: 340px; }
   .works { row-gap: 56px; }
   section { padding: 88px 0; }
 }
 @media (max-width: 600px) {
   body { font-size: 18px; }
   .name { font-size: 21vw; }
-  .facts div, .career li, .skills div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .career li, .skills div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .hero { padding-bottom: 48px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .name .line span { animation: none; }
+  .name .line span, .portrait img { animation: none; }
 }
 </style>
 </head>
@@ -262,11 +266,12 @@ footer { border-top: 1px solid var(--black); padding: 28px 0 40px; display: flex
 
   <main id="main">
     <header class="hero" id="top">
-      <h1 class="name" aria-label="Bharbara Souza">
+      <div class="hero-grid">
+        <h1 class="name" aria-label="Bharbara Souza">
         <span class="line" aria-hidden="true"><span>Bharbara</span></span>
         <span class="line" aria-hidden="true"><span>Souza</span></span>
       </h1>
-      <div class="hero-foot">
+        <figure class="portrait"><img src="portrait.jpg" width="501" height="627" alt="Portrait of Bharbara Souza"></figure>
         <p data-i18n="hero.p">I've spent seven years in operations at Toptal, building the trackers, programs and processes that help a global talent network run.</p>
         <dl class="facts">
           <div><dt data-i18n="f1.k">At Toptal since</dt><dd>2019</dd></div>
